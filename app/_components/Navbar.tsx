@@ -10,11 +10,12 @@ import Link from "next/link";
 
 const Navbar = () => {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const [windowWidth, setWindowWidth] = useState(window?.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
   const [expandMobileNav, setExpandMobileNav] = useState(false);
   const [activeNavLink, setActiveNavLink] = useState("Home");
 
   useEffect(() => {
+    setWindowWidth(window?.innerWidth);
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
