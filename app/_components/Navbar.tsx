@@ -63,7 +63,7 @@ const Navbar = () => {
   }, [expandMobileNav]);
 
   return (
-    <header className="w-full bg-muted relative mb-10">
+    <header className="w-full bg-muted relative mb-10 mx-0 px-0">
       <nav className="w-full flex max-w-[80rem] py-3 px-4 md:px-12 md:h-[5rem] mx-auto mb-0">
         <Image src={logo} width={60} height={40} alt="logo" />
         <div className="w-full max-w-[80rem] mx-auto pt-2 pr-8 md:pr-16 right-auto flex justify-between items-center absolute top-[70%] rounded-[0.5rem]">
