@@ -84,8 +84,9 @@ const Navbar = () => {
                 onClick={() => {
                   setExpandMobileNav(true);
                 }}
+                className="bg-white hover:scale-[1.01] hover:bg-accent hover:text-primary"
               >
-                <Menu />
+                <Menu className="text-primary " />
               </Button>
 
               {windowWidth < 720 && expandMobileNav ? (
@@ -143,7 +144,9 @@ const Navbar = () => {
               ))}
             </div>
           )}
-          <Button>Donate Now</Button>
+          <Button className="bg-white text-primary hover:scale-[1.01] hover:bg-accent hover:text-primary">
+            Donate Now
+          </Button>
         </div>
       </nav>
     </header>
