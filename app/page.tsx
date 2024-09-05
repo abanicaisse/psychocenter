@@ -2,6 +2,7 @@ import Image from "next/image";
 import psychocenter from "@/public/psycho-center.jpg";
 import { Button } from "@/components/ui/button";
 import AboutUs from "./_components/AboutUs";
+import TeamMembers from "./_components/TeamMembers";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         </div>
       </main>
       <AboutUs />
+      <TeamMembers />
     </>
   );
 }

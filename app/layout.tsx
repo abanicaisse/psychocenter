@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`flex flex-col w-full min-h-[100vh] ${inter.className} bg-white`}
+        className={`flex flex-col w-full min-h-[100vh] ${inter.className} bg-white overflow-x-hidden`}
       >
         <Navbar />
         {children}

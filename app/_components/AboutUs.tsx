@@ -29,7 +29,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <section className="pt-[1.5rem] -mt-[0rem] bg-whtie">
+    <section className="pt-[1.5rem] pb-[2rem] -mt-[0rem] bg-whtie">
       <div className="w-full flex flex-col gap-4 max-w-[80rem] px-4 md:px-12 py-3 md:py-8 mx-auto mb-0">
         <h1 className="text-[#7D7D7D] text-[1.5rem]">A propos de nous</h1>
         <div>
