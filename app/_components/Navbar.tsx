@@ -63,11 +63,12 @@ const Navbar = () => {
         display: "none",
         duration: 2,
         left: -100,
+        width: 0,
       },
       {
         display: "flex",
         left: "-1rem",
-        width: "70%",
+        width: "80%",
       }
     );
   }, [expandMobileNav]);
@@ -92,7 +93,7 @@ const Navbar = () => {
                   ref={mobileMenuRef}
                   className={`${
                     windowWidth < 720 && expandMobileNav ? "flex" : "hidden"
-                  } mobile-menu w-[40%] h-[100vh] flex-col absolute top-[-3.7rem] left-[-1rem] px-[2rem] py-[2rem] bg-primary z-[100] overflow-y-auto`}
+                  } mobile-menu w-full flex-col fixed top-0 bottom-0 left-0 px-[2rem] py-[2rem] bg-primary z-[100] overflow-y-auto`}
                 >
                   <X
                     width={30}
