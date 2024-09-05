@@ -3,6 +3,7 @@ import psychocenter from "@/public/psycho-center.jpg";
 import { Button } from "@/components/ui/button";
 import AboutUs from "./_components/AboutUs";
 import TeamMembers from "./_components/TeamMembers";
+import LatestArticles from "./_components/LatestArticles";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       </main>
       <AboutUs />
       <TeamMembers />
+      <LatestArticles />
     </>
   );
 }
