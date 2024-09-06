@@ -11,6 +11,7 @@ const LatestArticles = () => {
     description: string;
     location: string;
     img: StaticImageData;
+    tag?: string;
   }[] = [
     {
       title: "Sensibilisation aux déplacés internes lors de la clinique mobile",
@@ -19,6 +20,7 @@ const LatestArticles = () => {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dignissimos debitis ducimus velit officiis qui.",
       location: "Bukavu, Sud-Kivu",
       img: activite1,
+      tag: "Activité",
     },
     {
       title: "Sensibilisation aux déplacés internes lors de la clinique mobile",
@@ -27,6 +29,7 @@ const LatestArticles = () => {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dignissimos debitis ducimus velit officiis qui.",
       location: "Bukavu, Sud-Kivu",
       img: activite1,
+      tag: "Général ",
     },
   ];
   return (

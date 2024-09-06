@@ -44,7 +44,7 @@ const Navbar = () => {
     },
     {
       label: "Blog",
-      url: "#",
+      url: "/blog",
     },
     {
       label: "About",

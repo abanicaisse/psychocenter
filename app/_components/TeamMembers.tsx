@@ -39,7 +39,7 @@ const TeamMembers = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(350px, 250px))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
             rowGap: "2rem",
             columnGap: "2.5rem",
             justifyContent: "center",
