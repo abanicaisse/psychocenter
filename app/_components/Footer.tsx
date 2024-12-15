@@ -70,9 +70,11 @@ const Footer = () => {
               <Instagram width={24} height={24} className="hover:underline" />
             </Link>
           </div>
-          <p className="cursor-pointer hover:underline">+243 000-000-000</p>
+           <p className="cursor-pointer hover:underline">
+            <a href="tel:+243834051717" className="no-underline hover:underline">+243 834 051 717</a>
+          </p>
           <p className="cursor-pointer hover:underline">
-            psychocenter@gmail.com
+            <a href="mailto:psychocenter20@gmail.com" className="no-underline hover:underline">psychocenter20@gmail.com</a>
           </p>
           <p className="cursor-pointer hover:underline">
             &copy;Copyright - psychocenter asbl
