@@ -1,8 +1,10 @@
-import Image, { StaticImageData } from "next/image";
 import React from "react";
-
-import juscarPic from "@/public/juscar.jpg";
 import { Button } from "@/components/ui/button";
+import Image, { StaticImageData } from "next/image";
+
+import evaristePic from "@/public/evariste.jpeg";
+import pachangaPic from "@/public/pachanga.jpeg";
+import juscarPic from "@/public/juscar.jpg";
 
 const TeamMembers = () => {
   const teamMembers: {
@@ -13,21 +15,21 @@ const TeamMembers = () => {
   }[] = [
     {
       name: "Kajibwami Ndjovu Evariste",
-      pic: juscarPic,
+      pic: evaristePic,
       role: "Co-fondateur & PDG",
-      bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quas veniam enim?",
+      bio: "Psychologue clinicien, secrétaire provincial de l'Union de Psychologues Cliniciens du Congo section du Sud-Kivu",
     },
     {
-      name: "Pachanga",
-      pic: juscarPic,
+      name: "LUTWAMUZIRE Pachanga",
+      pic: pachangaPic,
       role: "Co-fondateur & Coordonateur projet",
-      bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quas veniam enim?",
+      bio: "Psychologue clinicien, Coordonateur du projet de psychologie communautaire de Psychocenter",
     },
     {
       name: "Asifiwe Ndjovu Juscar",
       pic: juscarPic,
-      role: "Psychologue Clinicien",
-      bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quas veniam enim?",
+      role: "Psychologue Clinicien Co-fondateur",
+      bio: "Psychologue clinicien, Spécialiste en Psychologie de la Santé",
     },
   ];
   return (
@@ -55,7 +57,7 @@ const TeamMembers = () => {
                 width={250}
                 height={250}
                 alt={member.name}
-                className="w-full rounded-[0.6rem]"
+                className="h-[420px] max-h-[420px] w-full object-cover rounded-[0.6rem]"
               />
               <div className="w-full flex flex-col gap-2">
                 <h1 className="text-[1.25rem] font-semibold text-primary">
