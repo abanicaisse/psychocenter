@@ -41,6 +41,7 @@ const LatestArticles = () => {
         <div className="w-full flex flex-col gap-12 md:gap-10">
           {latestArticles.map((article, i) => (
             <div
+              key={i}
               className={`w-full flex flex-col ${
                 i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               } gap-[1.5rem]`}
@@ -77,7 +78,7 @@ const LatestArticles = () => {
                   {article.description}
                 </p>
                 <Button className="bg-primary hover:scale-[1.01] hover:bg-accent hover:text-primary mt-[1.5rem] md:mt-[3rem]">
-                  Lire l'article
+                  Lire l&apos;article
                 </Button>
               </div>
             </div>

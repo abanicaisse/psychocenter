@@ -13,8 +13,9 @@ const ArticleTabsBar = () => {
   ];
   return (
     <div className="w-full max-w-[80rem] flex gap-4 my-6 md:my-10 mx-auto">
-      {articleTags.map((tab) => (
+      {articleTags.map((tab, idx) => (
         <p
+          key={idx}
           onClick={() => {
             setActiveTab(tab.name);
           }}

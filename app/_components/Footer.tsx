@@ -46,8 +46,8 @@ const Footer = () => {
           </div>
           <div className="w-full flex gap-10 justify-between">
             <div className="flex flex-col gap-4">
-              {footerLinks.map((link) => (
-                <Link href={link.url} className="hover:underline">
+              {footerLinks.map((link, idx) => (
+                <Link key={idx} href={link.url} className="hover:underline">
                   {link.label}
                 </Link>
               ))}
@@ -70,11 +70,21 @@ const Footer = () => {
               <Instagram width={24} height={24} className="hover:underline" />
             </Link>
           </div>
-           <p className="cursor-pointer hover:underline">
-            <a href="tel:+243834051717" className="no-underline hover:underline">+243 834 051 717</a>
+          <p className="cursor-pointer hover:underline">
+            <a
+              href="tel:+243834051717"
+              className="no-underline hover:underline"
+            >
+              +243 834 051 717
+            </a>
           </p>
           <p className="cursor-pointer hover:underline">
-            <a href="mailto:psychocenter20@gmail.com" className="no-underline hover:underline">psychocenter20@gmail.com</a>
+            <a
+              href="mailto:psychocenter20@gmail.com"
+              className="no-underline hover:underline"
+            >
+              psychocenter20@gmail.com
+            </a>
           </p>
           <p className="cursor-pointer hover:underline">
             &copy;Copyright - psychocenter asbl

@@ -34,8 +34,9 @@ const AboutUs = () => {
         <h1 className="text-[#7D7D7D] text-[1.5rem]">A propos de nous</h1>
         <div>
           <div className="tabs w-full flex flex-wrap gap-4 [&::-webkit-scrollbar]:hidden cursor-pointer overflow-x-auto">
-            {tabs.map((tab) => (
+            {tabs.map((tab, idx) => (
               <p
+                key={idx}
                 onClick={() => {
                   setActiveTab(tab.tabName);
                 }}

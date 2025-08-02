@@ -45,8 +45,11 @@ const TeamMembers = () => {
             justifyContent: "center",
           }}
         >
-          {teamMembers.map((member) => (
-            <div className="w-full flex flex-col gap-4  bg-white px-4 py-6 rounded-[0.6rem]">
+          {teamMembers.map((member, idx) => (
+            <div
+              key={idx}
+              className="w-full flex flex-col gap-4  bg-white px-4 py-6 rounded-[0.6rem]"
+            >
               <Image
                 src={member.pic}
                 width={250}

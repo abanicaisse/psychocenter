@@ -50,10 +50,10 @@ const Blogs = () => {
             Blog
           </h1>
           <p className="text-[#7D7D7D] leading-[159%]">
-            Bienvenue sur notre blog, l'endroit où nous parlons de toutes nos
-            activités, de nos conseils et pratiques en matière de santé mentale,
-            ainsi que de nos actualités communautaires et de nos histoires
-            d'impact.
+            Bienvenue sur notre blog, l&apos;endroit où nous parlons de toutes
+            nos activités, de nos conseils et pratiques en matière de santé
+            mentale, ainsi que de nos actualités communautaires et de nos
+            histoires d&apos;impact.
           </p>
           <div className="w-full h-fit flex items-center justify-between gap-2 border-[1px] rounded-[0.5rem] px-[0.75rem] py-[0.65rem]">
             <input
@@ -79,7 +79,7 @@ const Blogs = () => {
           }}
         >
           {blogArticles.map((article, i) => (
-            <div className={`w-full flex flex-col gap-[1.5rem]`}>
+            <div key={i} className={`w-full flex flex-col gap-[1.5rem]`}>
               <div className="w-full flex-1 flex flex-col gap-6">
                 <Image
                   src={article.img}
@@ -103,7 +103,7 @@ const Blogs = () => {
                   {article.description}
                 </p>
                 <Button className="bg-primary hover:scale-[1.01] hover:bg-accent hover:text-primary mt-[1.5rem] md:mt-[3rem]">
-                  Lire l'article
+                  Lire l&apos;article
                 </Button>
               </div>
             </div>
