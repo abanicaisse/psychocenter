@@ -1,10 +1,18 @@
+"use client";
+
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { Button } from "@/components/ui/button";
-import activite1 from "@/public/articles/psycho-center-activite1.jpeg";
+
 import { Clock4, MapPin } from "lucide-react";
 
+import psychoEdImg from "@/public/activites/psychoeducation-de-groupe.jpeg";
+import seanceDiscGroup from "@/public/activites/seance-discussion-de-groupe-batumba.jpeg";
+import { useRouter } from "next/navigation";
+
 const LatestArticles = () => {
+  const router = useRouter();
+
   const latestArticles: {
     title: string;
     pubDate: string;
@@ -12,24 +20,28 @@ const LatestArticles = () => {
     location: string;
     img: StaticImageData;
     tag?: string;
+    href: string;
   }[] = [
     {
-      title: "Sensibilisation aux déplacés internes lors de la clinique mobile",
-      pubDate: "05 Septembre, 2024",
+      title:
+        "Psychoeducation de groupe sur la santé et droit sexuelle à Irangui, Chefferie de Lundi",
+      pubDate: "01 Août, 2025",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dignissimos debitis ducimus velit officiis qui.",
-      location: "Bukavu, Sud-Kivu",
-      img: activite1,
+        "Psychoeducation de groupe sur la santé et droit sexuelle à Irangui, Chefferie de Lundi",
+      location: "Mwenga, Sud-Kivu",
+      img: psychoEdImg,
       tag: "Activité",
+      href: "/blog/psychoeducation-de-groupe",
     },
     {
-      title: "Sensibilisation aux déplacés internes lors de la clinique mobile",
-      pubDate: "05 Septembre, 2024",
+      title: "Seance de discussion de groupe á Batumba, chefferie de Basile",
+      pubDate: "02 Août, 2025",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt dignissimos debitis ducimus velit officiis qui.",
-      location: "Bukavu, Sud-Kivu",
-      img: activite1,
-      tag: "Général ",
+        "Seance de discussion de groupe á Batumba, chefferie de Basile",
+      location: "Mwenga, Sud-Kivu",
+      img: seanceDiscGroup,
+      tag: "Activité",
+      href: "/blog/seance-discussion-de-groupe-de-batumba",
     },
   ];
   return (
@@ -77,14 +89,20 @@ const LatestArticles = () => {
                 <p className="w-full flex gap-3 items-center text-[#7D7D7D] text-xl mb-3">
                   {article.description}
                 </p>
-                <Button className="bg-primary hover:scale-[1.01] hover:bg-accent hover:text-primary mt-[1.5rem] md:mt-[3rem]">
+                <Button
+                  onClick={() => router.push(article.href)}
+                  className="bg-primary hover:scale-[1.01] hover:bg-accent hover:text-primary mt-[1.5rem] md:mt-[3rem]"
+                >
                   Lire l&apos;article
                 </Button>
               </div>
             </div>
           ))}
         </div>
-        <Button className="w-fit mx-auto bg-white text-primary hover:bg-primary hover:text-accent border-[1px] border-primary mt-0">
+        <Button
+          onClick={() => router.push("/blog")}
+          className="w-fit mx-auto bg-white text-primary hover:bg-primary hover:text-accent border-[1px] border-primary mt-0"
+        >
           Visiter Notre Blog
         </Button>
       </div>
