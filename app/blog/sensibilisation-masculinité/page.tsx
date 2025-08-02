@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 import { Clock4, MapPin } from "lucide-react";
 
-import activiteImg from "@/public/activites/sensibilisation-masculinité.jpeg";
+import activiteImg from "@/public/activites/sensibilisation-masculinite.jpeg";
 
 const SensibilisationMasculinite = () => {
   const blogArticle: {

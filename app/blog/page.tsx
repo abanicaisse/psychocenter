@@ -12,7 +12,7 @@ import psychoEdImg from "@/public/activites/psychoeducation-de-groupe.jpeg";
 import seanceDiscGroup from "@/public/activites/seance-discussion-de-groupe-batumba.jpeg";
 import sensibilisationAVEC from "@/public/activites/sensibilisation-AVEC-1.jpeg";
 import sensibilisationEleves from "@/public/activites/sensibilisation-eleves.jpeg";
-import sensibilisationMasculinite from "@/public/activites/sensibilisation-masculinité.jpeg";
+import sensibilisationMasculinite from "@/public/activites/sensibilisation-masculinite.jpeg";
 import sensibilisationLeaders from "@/public/activites/sensibilisation-leader-mwenga.jpeg";
 import sensibilisationFamilleDeplacee from "@/public/activites/sensibilisation-famille-deplacee.jpeg";
 import SensibilisationFemmesTheme from "@/public/activites/sensibilisations-femmes-theme.jpeg";
