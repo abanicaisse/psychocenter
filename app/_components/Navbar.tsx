@@ -1,22 +1,19 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Heart } from "lucide-react";
 import Image from "next/image";
 import logo from "@/public/logo.png";
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
+import psychocenterImg from "@/public/psycho-center.jpg";
 
 const Navbar = () => {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const [windowWidth, setWindowWidth] = useState(0);
   const [expandMobileNav, setExpandMobileNav] = useState(false);
   const [activeNavLink, setActiveNavLink] = useState("Home");
-
-  // !expandMobileNav
-  //   ? (document.body.style.overflowY = "auto")
-  //   : (document.body.style.overflowY = "hidden");
 
   useEffect(() => {
     !expandMobileNav
@@ -47,12 +44,12 @@ const Navbar = () => {
       url: "/blog",
     },
     {
-      label: "About",
-      url: "#",
+      label: "À Propos de Nous",
+      url: "/about-us",
     },
     {
-      label: "Contact us",
-      url: "#",
+      label: "Nous Contacter",
+      url: "/contact-us",
     },
   ];
 
@@ -68,86 +65,152 @@ const Navbar = () => {
       {
         display: "flex",
         left: "-1rem",
-        width: "80%",
+        width: "85%",
       },
     );
   }, [expandMobileNav]);
 
   return (
-    <header className="w-full bg-muted sticky top-0 left-0 right-0 mb-10 mx-0 px-0 z-50">
-      <nav className="w-full flex max-w-[80rem] py-3 px-4 md:px-12 md:h-[5rem] mx-auto mb-0 relative">
-        <Image src={logo} width={60} height={40} alt="logo" />
-        <div className="w-full max-w-[80rem] mx-auto pt-2 px-4 md:px-12 right-0 flex justify-between items-center absolute top-[70%] rounded-[0.5rem]">
-          {windowWidth < 720 ? (
-            <>
-              <Button
-                onClick={() => {
-                  setExpandMobileNav(true);
-                }}
-                className="bg-white hover:scale-[1.01] hover:bg-accent hover:text-primary"
-              >
-                <Menu className="text-primary " />
-              </Button>
+    <header className="w-full bg-muted/95 backdrop-blur-sm sticky top-0 left-0 right-0 mx-0 px-0 z-50 border-b border-primary/5 shadow-sm">
+      <nav className="w-full flex items-center justify-between max-w-[80rem] py-4 px-4 md:px-12 mx-auto relative">
+        {/* Logo Section */}
+        <Link href="/" className="flex items-center gap-3 group relative z-10">
+          <div className="relative">
+            <div className="absolute inset-0 bg-accent/20 rounded-lg blur-sm group-hover:blur-md transition-all duration-300"></div>
+            <Image
+              src={logo}
+              width={60}
+              height={40}
+              alt="Psychocenter ASBL"
+              className="relative rounded-lg border-2 border-accent/20 group-hover:border-accent/40 transition-all duration-300"
+            />
+          </div>
+          <div className="hidden md:block">
+            <h1 className="text-primary font-bold text-lg leading-tight">
+              Psychocenter
+            </h1>
+            <p className="text-primary/60 text-xs">ASBL</p>
+          </div>
+        </Link>
 
-              {windowWidth < 720 && expandMobileNav ? (
-                <div
-                  ref={mobileMenuRef}
-                  className={`${
-                    windowWidth < 720 && expandMobileNav ? "flex" : "hidden"
-                  } mobile-menu w-full flex-col fixed top-0 bottom-0 left-0 px-[2rem] py-[2rem] bg-primary z-[100] overflow-y-auto`}
-                >
-                  <X
-                    width={30}
-                    height={30}
-                    className="text-secondary ml-auto cursor-pointer"
-                    onClick={() => setExpandMobileNav(false)}
-                  />
-                  <div className="w-full flex flex-col gap-[2rem] pt-[2rem]">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.label}
-                        href={link.url}
-                        className={`${
-                          activeNavLink === link.label
-                            ? "border-b-[4px] border-b-accent text-accent"
-                            : "border-none"
-                        } w-max text-secondary text-xl font-medium leading-normal  px-[.1rem] pb-1  rounded-[0.01875rem] cursor-pointer`}
-                        onClick={() => setActiveNavLink(link.label)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <></>
-              )}
-            </>
-          ) : (
-            <div
-              className="flex items-center gap-[2rem] bg-white px-4 pt-4 rounded-[0.5rem]"
-              style={{ boxShadow: "0px 6px 8px 6px rgba(0,0,0,0.1)" }}
+        {/* Desktop Navigation */}
+        {windowWidth >= 720 && (
+          <div className="hidden md:flex items-center gap-1 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-xl shadow-md border border-primary/5">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.url}
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+                  activeNavLink === link.label
+                    ? "text-primary"
+                    : "text-primary/70 hover:text-primary"
+                }`}
+                onClick={() => setActiveNavLink(link.label)}
+              >
+                {link.label}
+                <span
+                  className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-accent rounded-full transition-all duration-300 ${
+                    activeNavLink === link.label
+                      ? "w-3/4"
+                      : "w-0 group-hover:w-1/2"
+                  }`}
+                ></span>
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {/* CTA Button (Desktop) */}
+        {windowWidth >= 720 && (
+          <Button className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-primary/90 text-white hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 rounded-xl px-6">
+            <Heart className="w-4 h-4" />
+            Donate Now
+          </Button>
+        )}
+
+        {/* Mobile Menu Button */}
+        {windowWidth < 720 && (
+          <div className="flex items-center gap-3">
+            <Button className="bg-gradient-to-r from-primary to-primary/90 text-white hover:from-primary/90 hover:to-primary shadow-md hover:shadow-lg transition-all duration-300 rounded-xl px-6">
+              <Heart className="w-4 h-4 mr-2" />
+              Donate
+            </Button>
+            <Button
+              onClick={() => setExpandMobileNav(true)}
+              className="bg-white hover:bg-accent/20 text-primary shadow-md hover:shadow-lg transition-all duration-300 rounded-xl p-3"
+              size="icon"
             >
-              {navLinks.map((link) => (
+              <Menu className="w-5 h-5" />
+            </Button>
+          </div>
+        )}
+
+        {/* Mobile Menu */}
+        {windowWidth < 720 && expandMobileNav && (
+          <div
+            ref={mobileMenuRef}
+            className="mobile-menu flex flex-col fixed inset-y-0 left-0 h-screen px-6 py-8 bg-gradient-to-br from-primary via-primary to-primary/95 z-[100] overflow-y-auto shadow-2xl"
+          >
+            {/* Close Button */}
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <Image
+                  src={psychocenterImg}
+                  width={50}
+                  height={35}
+                  alt="logo"
+                  className="rounded-lg border-2 border-accent/30"
+                />
+                <div>
+                  <h2 className="text-white font-bold text-lg">Psychocenter</h2>
+                  <p className="text-accent text-xs">ASBL</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setExpandMobileNav(false)}
+                className="p-2 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-200"
+              >
+                <X className="w-6 h-6 text-white" />
+              </button>
+            </div>
+
+            {/* Mobile Navigation Links */}
+            <div className="flex flex-col gap-2 flex-1">
+              {navLinks.map((link, idx) => (
                 <Link
                   key={link.label}
                   href={link.url}
-                  className={`${
+                  className={`group relative px-4 py-4 rounded-xl transition-all duration-300 ${
                     activeNavLink === link.label
-                      ? "border-b-[4px] border-b-accent"
-                      : "border-none"
-                  } text-[#000] text-xl font-medium leading-normal  px-[.3rem] pb-1  rounded-[0.1875rem] cursor-pointer`}
-                  onClick={() => setActiveNavLink(link.label)}
+                      ? "bg-accent/20 text-accent"
+                      : "text-white/90 hover:bg-white/10 hover:text-white"
+                  }`}
+                  onClick={() => {
+                    setActiveNavLink(link.label);
+                    setExpandMobileNav(false);
+                  }}
                 >
-                  {link.label}
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-medium">{link.label}</span>
+                    {activeNavLink === link.label && (
+                      <div className="w-2 h-2 rounded-full bg-accent"></div>
+                    )}
+                  </div>
+                  {activeNavLink === link.label && (
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-accent rounded-r-full"></div>
+                  )}
                 </Link>
               ))}
             </div>
-          )}
-          <Button className="bg-white text-primary hover:scale-[1.01] hover:bg-accent hover:text-primary">
-            Donate Now
-          </Button>
-        </div>
+
+            {/* Mobile Menu Footer */}
+            <div className="mt-auto pt-6 border-t border-white/10">
+              <p className="text-white/60 text-sm text-center">
+                Mental Health Care & Psychosocial Support
+              </p>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );

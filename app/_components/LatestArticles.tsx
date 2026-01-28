@@ -3,8 +3,9 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
-import { Clock4, MapPin } from "lucide-react";
+import { Clock4, MapPin, ArrowRight, BookOpen } from "lucide-react";
 
 import psychoEdImg from "@/public/activites/psychoeducation-de-groupe.jpeg";
 import seanceDiscGroup from "@/public/activites/seance-discussion-de-groupe-batumba.jpeg";
@@ -44,67 +45,125 @@ const LatestArticles = () => {
       href: "/blog/seance-discussion-de-groupe-de-batumba",
     },
   ];
+
   return (
-    <section className="pt-[1.5rem] pb-[2rem] -mt-[0rem] bg-white">
-      <div className="w-full flex flex-col gap-[2rem] md:gap-[3.45rem] max-w-[80rem] px-4 md:px-12 py-3 md:py-8 mx-auto mb-0">
-        <h1 className="text-center text-3xl font-semibold leading-normal">
-          Articles Recents de Notre Blog
-        </h1>
-        <div className="w-full flex flex-col gap-12 md:gap-16">
+    <section className="relative py-20 bg-gradient-to-b from-white to-muted/30">
+      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20 mb-4">
+            <BookOpen className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Notre Blog</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+            Articles Récents
+          </h2>
+          <p className="text-xl text-primary/70 max-w-3xl mx-auto">
+            Découvrez nos dernières activités et initiatives au service des
+            communautés
+          </p>
+        </div>
+
+        {/* Articles */}
+        <div className="space-y-12">
           {latestArticles.map((article, i) => (
-            <div
+            <article
               key={i}
-              className={`w-full flex flex-col ${
-                i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              } gap-[1.5rem]`}
+              className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-primary/5 hover:border-primary/20"
             >
-              <div className="w-full flex-1 flex flex-col md:flex-row  gap-6">
-                {i % 2 !== 0 && (
-                  <div className="w-full hidden md:flex md:w-[10px] h-[10px] md:h-full bg-accent rounded-lg"></div>
-                )}
-                <Image
-                  src={article.img}
-                  width={100}
-                  height={100}
-                  alt={`activité ${i + 1}`}
-                  className="w-full rounded-[0.6rem]"
-                />
-                {i % 2 === 0 && (
-                  <div className="w-full md:w-[10px] h-[10px] md:h-full bg-accent rounded-lg"></div>
-                )}
-                {i % 2 !== 0 && (
-                  <div className="w-full md:hidden md:w-[10px] h-[10px] md:h-full bg-accent rounded-lg"></div>
-                )}
-              </div>
-              <div className="w-full flex-1">
-                <h1 className="text-2xl font-semibold leading-normal mb-6">
-                  {article.title}
-                </h1>
-                <p className="w-full flex gap-3 items-center text-[#7D7D7D] text-lg mb-3">
-                  <Clock4 /> <span>{article.pubDate}</span>
-                </p>
-                <p className="w-full flex gap-3 items-center text-[#7D7D7D] text-lg mb-6">
-                  <MapPin /> <span>{article.location}</span>
-                </p>
-                <p className="w-full flex gap-3 items-center text-[#7D7D7D] text-xl mb-3">
-                  {article.description}
-                </p>
-                <Button
-                  onClick={() => router.push(article.href)}
-                  className="bg-primary hover:scale-[1.01] hover:bg-accent hover:text-primary mt-[1.5rem] md:mt-[3rem]"
+              <div
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-0 ${
+                  i % 2 !== 0 ? "lg:grid-flow-dense" : ""
+                }`}
+              >
+                {/* Image */}
+                <div
+                  className={`relative aspect-[16/10] lg:aspect-auto lg:min-h-[400px] overflow-hidden ${
+                    i % 2 !== 0 ? "lg:col-start-2" : ""
+                  }`}
                 >
-                  Lire l&apos;article
-                </Button>
+                  <Image
+                    src={article.img}
+                    fill
+                    alt={article.title}
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {article.tag && (
+                    <div className="absolute top-6 left-6">
+                      <Badge className="bg-primary text-white px-4 py-2 text-sm shadow-xl">
+                        {article.tag}
+                      </Badge>
+                    </div>
+                  )}
+                  {/* Decorative accent bar */}
+                  <div
+                    className={`absolute ${
+                      i % 2 === 0 ? "right-0" : "left-0"
+                    } top-0 bottom-0 w-2 bg-accent`}
+                  ></div>
+                </div>
+
+                {/* Content */}
+                <div className="p-8 md:p-12 flex flex-col justify-center">
+                  <div className="space-y-6">
+                    {/* Meta */}
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-primary/60">
+                      <div className="flex items-center gap-2">
+                        <Clock4 className="w-4 h-4 text-primary" />
+                        <span className="font-medium">{article.pubDate}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-primary" />
+                        <span className="font-medium">{article.location}</span>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-2xl md:text-3xl font-bold text-primary leading-tight group-hover:text-primary/80 transition-colors line-clamp-3">
+                      {article.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-lg text-primary/70 leading-relaxed line-clamp-3">
+                      {article.description}
+                    </p>
+
+                    {/* CTA */}
+                    <Button
+                      onClick={() => router.push(article.href)}
+                      className="w-fit bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all group/btn"
+                    >
+                      Lire l&apos;article
+                      <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                    </Button>
+                  </div>
+                </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
-        <Button
-          onClick={() => router.push("/blog")}
-          className="w-fit mx-auto bg-white text-primary hover:bg-primary hover:text-accent border-[1px] border-primary mt-0"
-        >
-          Visiter Notre Blog
-        </Button>
+
+        {/* View All CTA */}
+        <div className="mt-16 text-center">
+          <div className="inline-block p-8 bg-gradient-to-br from-primary via-primary to-primary/90 rounded-3xl shadow-2xl">
+            <BookOpen className="w-12 h-12 text-accent mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Explorez Tous Nos Articles
+            </h3>
+            <p className="text-white/80 mb-6 max-w-md">
+              Découvrez l&apos;ensemble de nos activités, conseils et histoires
+              d&apos;impact
+            </p>
+            <Button
+              onClick={() => router.push("/blog")}
+              variant="outline"
+              className="bg-white text-primary hover:bg-accent hover:text-primary border-2 border-white font-semibold px-8 py-6 text-lg rounded-xl transition-all group"
+            >
+              Visiter Notre Blog
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   );

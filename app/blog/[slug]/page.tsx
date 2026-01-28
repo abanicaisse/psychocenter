@@ -25,9 +25,9 @@ const BlogDetail = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-muted to-white pt-[-4rem] -mt-[3rem]">
+    <main className="min-h-screen bg-gradient-to-b from-muted to-white">
       {/* Hero Section */}
-      <div className="relative w-full bg-gradient-to-br from-accent/10 via-white to-accent/5 pt-[2rem]">
+      <div className="relative w-full bg-gradient-to-br from-accent/10 via-white to-accent/5">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 md:pt-16 md:pb-16">
           {/* Category Badge */}
           {blogArticle.tag && (
