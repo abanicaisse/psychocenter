@@ -35,13 +35,14 @@ const Footer = () => {
           <div className="w-full flex items-center gap-8 mb-10 md:mb-0">
             <Image
               src={psychocenterImg}
-              width={128}
-              height={128}
+              width={100}
+              height={100}
               alt="psychocenter"
+              className="rounded-lg"
             />
             <p className="w-fit max-w-[20.625rem] text-[#494444]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Cupiditate atque perspiciatis harum molestiae asperiores error!
+              Soins de Santé Mentale, Prise en charge psychosociale individuelle
+              et communautaire
             </p>
           </div>
           <div className="w-full flex gap-10 justify-between">
@@ -53,22 +54,28 @@ const Footer = () => {
               ))}
             </div>
             <div className="flex flex-col gap-2 ">
-              <h2 className="text-primary text-2xl">Registered Office</h2>
-              <p>D.R.Congo, Sud-Kivu 243</p>
+              <h2 className="text-primary text-xl">Addresse Physique</h2>
+              <p>Sud-Kivu 243, R. D. Congo</p>
             </div>
           </div>
         </div>
         <div className="w-full flex flex-wrap items-center justify-between gap-5 border-t-[1px] border-t-solid  pt-12 pb-6">
           <div className="flex gap-4 items-center">
-            <Link href={"#"}>
+            <Link
+              href={"https://web.facebook.com/profile.php?id=61579025191318"}
+              className="flex gap-2"
+            >
               <Facebook width={24} height={24} className="hover:underline" />
+              <span className="text-lg font-medium hover:underline">
+                Facebook
+              </span>
             </Link>
-            <Link href={"#"}>
+            {/* <Link href={"#"}>
               <Linkedin width={24} height={24} className="hover:underline" />
             </Link>
             <Link href={"#"}>
               <Instagram width={24} height={24} className="hover:underline" />
-            </Link>
+            </Link> */}
           </div>
           <p className="cursor-pointer hover:underline">
             <a
@@ -90,7 +97,7 @@ const Footer = () => {
             &copy;Copyright - psychocenter asbl
           </p>
         </div>
-        <p className="w-full text-center border-t-[1px] border-t-solid pt-6">
+        <p className="w-full text-xs text-center border-t-[1px] border-t-solid pt-6">
           Built with love by{" "}
           <Link
             href={"https://www.github.com/abanicaisse"}

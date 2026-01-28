@@ -2,34 +2,34 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Image, { StaticImageData } from "next/image";
 
-import evaristePic from "@/public/evariste.jpeg";
-import pachangaPic from "@/public/pachanga.jpeg";
-import juscarPic from "@/public/juscar.jpg";
+// import evaristePic from "@/public/evariste.jpeg";
+// import pachangaPic from "@/public/pachanga.jpeg";
+// import juscarPic from "@/public/juscar.jpg";
 
 const TeamMembers = () => {
   const teamMembers: {
     name: string;
-    pic: StaticImageData;
+    // pic: StaticImageData;
     role: string;
     bio: string;
   }[] = [
     {
-      name: "Kajibwami Ndjovu Evariste",
-      pic: evaristePic,
+      name: "Kajibwami Evariste",
+      // pic: evaristePic,
       role: "Co-fondateur & PDG",
       bio: "Psychologue clinicien, secrétaire provincial de l'Union de Psychologues Cliniciens du Congo section du Sud-Kivu",
     },
     {
       name: "LUTWAMUZIRE Pachanga",
-      pic: pachangaPic,
-      role: "Co-fondateur & Coordonateur projet",
-      bio: "Psychologue clinicien, Coordonateur du projet de psychologie communautaire de Psychocenter",
+      // pic: pachangaPic,
+      role: "Co-fondateur & Sup./Mob./Com.",
+      bio: "Superviseur et Mobilisateur Communautaire en santé mentale",
     },
     {
-      name: "Asifiwe Ndjovu Juscar",
-      pic: juscarPic,
+      name: "Asifiwe Ndjovu Guscar",
+      // pic: juscarPic,
       role: "Psychologue Clinicien Co-fondateur",
-      bio: "Psychologue clinicien, Spécialiste en Psychologie de la Santé",
+      bio: "Psychologue clinicien, Superviseur en santé mentale",
     },
   ];
   return (
@@ -52,13 +52,13 @@ const TeamMembers = () => {
               key={idx}
               className="w-full flex flex-col gap-4  bg-white px-4 py-6 rounded-[0.6rem]"
             >
-              <Image
+              {/* <Image 
                 src={member.pic}
                 width={250}
                 height={250}
                 alt={member.name}
                 className="h-[420px] max-h-[420px] w-full object-cover rounded-[0.6rem]"
-              />
+              /> */}
               <div className="w-full flex flex-col gap-2">
                 <h1 className="text-[1.25rem] font-semibold text-primary">
                   {member.name}
@@ -71,9 +71,9 @@ const TeamMembers = () => {
             </div>
           ))}
         </div>
-        <Button className="w-fit mx-auto bg-white text-primary hover:bg-primary hover:text-accent border-[1px] border-primary mt-0">
+        {/* <Button className="w-fit mx-auto bg-white text-primary hover:bg-primary hover:text-accent border-[1px] border-primary mt-0">
           Tous nos membres
-        </Button>
+        </Button> */}
       </div>
     </section>
   );

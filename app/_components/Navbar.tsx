@@ -69,12 +69,12 @@ const Navbar = () => {
         display: "flex",
         left: "-1rem",
         width: "80%",
-      }
+      },
     );
   }, [expandMobileNav]);
 
   return (
-    <header className="w-full bg-muted sticky top-0 left-0 right-0 mb-10 mx-0 px-0">
+    <header className="w-full bg-muted sticky top-0 left-0 right-0 mb-10 mx-0 px-0 z-50">
       <nav className="w-full flex max-w-[80rem] py-3 px-4 md:px-12 md:h-[5rem] mx-auto mb-0 relative">
         <Image src={logo} width={60} height={40} alt="logo" />
         <div className="w-full max-w-[80rem] mx-auto pt-2 px-4 md:px-12 right-0 flex justify-between items-center absolute top-[70%] rounded-[0.5rem]">

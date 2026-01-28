@@ -1,12 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import React from "react";
-import ArticleTabsBar from "./ArticleTabsBar";
+import { Badge } from "@/components/ui/badge";
+import React, { useState, useMemo } from "react";
+import ArticleTabsBar from "./_components/ArticleTabsBar";
 import { useRouter } from "next/navigation";
+import BlogPagination from "@/app/blog/_components/BlogPagination";
 
 import Image, { StaticImageData } from "next/image";
-import { Clock4, MapPin } from "lucide-react";
+import { Clock4, MapPin, Search } from "lucide-react";
 
 import psychoEdImg from "@/public/activites/psychoeducation-de-groupe.jpeg";
 import seanceDiscGroup from "@/public/activites/seance-discussion-de-groupe-batumba.jpeg";
@@ -19,6 +21,9 @@ import SensibilisationFemmesTheme from "@/public/activites/sensibilisations-femm
 
 const Blogs = () => {
   const router = useRouter();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
+
   const blogArticles: {
     title: string;
     pubDate: string;
@@ -108,80 +113,134 @@ const Blogs = () => {
       href: "/blog/sensibilisations-des-eleves",
     },
   ];
+
+  // Calculate pagination
+  const totalPages = Math.ceil(blogArticles.length / itemsPerPage);
+
+  const paginatedArticles = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return blogArticles.slice(startIndex, endIndex);
+  }, [currentPage, itemsPerPage, blogArticles]);
+
+  // Reset to page 1 when items per page changes
+  const handleItemsPerPageChange = (items: number) => {
+    setItemsPerPage(items);
+    setCurrentPage(1);
+  };
+
   return (
-    <main className="pt-[3rem] -mt-[3rem]">
-      <div className="w-full flex flex-col max-w-[80rem] px-4 md:px-12 py-3 md:py-8 mx-auto mb-0">
-        <div className="w-full max-w-[38.625rem] mx-auto flex flex-col items-center gap-6 text-center mt-4">
-          <h1 className="text-center text-3xl font-semibold leading-normal">
+    <main className="min-h-screen bg-gradient-to-b from-muted to-white">
+      {/* Hero Section */}
+      <div className="relative w-full bg-gradient-to-br from-accent/10 via-white to-accent/5 pt-16 pb-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-5xl md:text-6xl font-bold text-primary text-center mb-6 tracking-tight">
             Blog
           </h1>
-          <p className="text-[#7D7D7D] leading-[159%]">
+          <p className="text-xl md:text-2xl text-primary/70 text-center leading-relaxed font-light mb-10 max-w-3xl mx-auto">
             Bienvenue sur notre blog, l&apos;endroit où nous parlons de toutes
             nos activités, de nos conseils et pratiques en matière de santé
             mentale, ainsi que de nos actualités communautaires et de nos
             histoires d&apos;impact.
           </p>
-          <div className="w-full h-fit flex items-center justify-between gap-2 border-[1px] rounded-[0.5rem] px-[0.75rem] py-[0.65rem]">
-            <input
-              type="search"
-              name="search-blog"
-              id="search-blog"
-              placeholder="Rechercher le blog"
-              className="w-full py-2 px-2 outline-none text-[#7D7D7D]"
-            />
-            <Button className="bg-primary hover:scale-[1.01] hover:bg-accent hover:text-primary">
-              Rechercher
-            </Button>
+
+          {/* Modern Search Bar */}
+          <div className="max-w-2xl mx-auto">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/50" />
+              <input
+                type="search"
+                name="search-blog"
+                id="search-blog"
+                placeholder="Rechercher des articles..."
+                className="w-full py-4 pl-12 pr-32 rounded-xl border-2 border-primary/10 focus:border-primary/30 outline-none text-primary placeholder:text-primary/40 transition-colors shadow-sm"
+              />
+              <Button className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg">
+                Rechercher
+              </Button>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Tabs Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <ArticleTabsBar />
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(20.25rem, 1fr))",
-            rowGap: "3rem",
-            columnGap: "2.5rem",
-            justifyContent: "center",
-          }}
-        >
-          {blogArticles.map((article, i) => (
-            <div key={i} className={`w-full flex flex-col gap-[1.5rem]`}>
-              <div className="h-[280px] max-h-[280px] w-full flex-1 flex flex-col">
+
+        {/* Articles Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          {paginatedArticles.map((article, i) => (
+            <article
+              key={i}
+              className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-primary/5 hover:border-primary/20 cursor-pointer"
+              onClick={() => router.push(article.href)}
+            >
+              {/* Image Container */}
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
                 <Image
                   src={article.img}
-                  width={100}
-                  height={100}
-                  alt={`activité ${i + 1}`}
-                  className="w-full h-[280px] object-cover rounded-[0.6rem]"
+                  fill
+                  alt={article.title}
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
+                {article.tag && (
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-primary text-white px-3 py-1 shadow-lg">
+                      {article.tag}
+                    </Badge>
+                  </div>
+                )}
               </div>
-              <div className="w-full flex-1">
-                <h1 className="text-2xl font-semibold leading-normal mb-6">
-                  {article.title.split(" ").length > 5
-                    ? article.title.split(" ").slice(0, 5).join(" ") + "..."
-                    : article.title}
-                </h1>
-                <p className="w-full flex gap-3 items-center text-[#7D7D7D] text-lg mb-3">
-                  <Clock4 /> <span>{article.pubDate}</span>
+
+              {/* Content Container */}
+              <div className="p-6 flex flex-col gap-4">
+                {/* Meta Information */}
+                <div className="flex flex-wrap items-center gap-4 text-sm text-primary/60">
+                  <div className="flex items-center gap-2">
+                    <Clock4 className="w-4 h-4 text-primary" />
+                    <span className="font-medium">{article.pubDate}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-primary" />
+                    <span className="font-medium">{article.location}</span>
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h2 className="text-xl font-bold text-primary leading-tight line-clamp-3 group-hover:text-primary/80 transition-colors">
+                  {article.title}
+                </h2>
+
+                {/* Description */}
+                <p className="text-base text-primary/70 leading-relaxed line-clamp-2">
+                  {article.description}
                 </p>
-                <p className="w-full flex gap-3 items-center text-[#7D7D7D] text-lg mb-6">
-                  <MapPin /> <span>{article.location}</span>
-                </p>
-                <p className="w-full flex gap-3 items-center text-[#7D7D7D] text-xl mb-3">
-                  {article.description.split(" ").length > 7
-                    ? article.description.split(" ").slice(0, 7).join(" ") +
-                      "..."
-                    : article.description}
-                </p>
+
+                {/* Read More Button */}
                 <Button
-                  onClick={() => router.push(article.href)}
-                  className="bg-primary hover:scale-[1.01] hover:bg-accent hover:text-primary mt-[1.5rem] md:mt-[3rem]"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    router.push(article.href);
+                  }}
+                  className="w-full mt-2 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-200 group-hover:shadow-lg"
                 >
                   Lire l&apos;article
                 </Button>
               </div>
-            </div>
+            </article>
           ))}
+        </div>
+
+        {/* Pagination */}
+        <div className="mt-12 mb-8">
+          <BlogPagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            itemsPerPage={itemsPerPage}
+            totalItems={blogArticles.length}
+            onPageChange={setCurrentPage}
+            onItemsPerPageChange={handleItemsPerPageChange}
+          />
         </div>
       </div>
     </main>

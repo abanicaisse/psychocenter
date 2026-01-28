@@ -50,7 +50,7 @@ const LatestArticles = () => {
         <h1 className="text-center text-3xl font-semibold leading-normal">
           Articles Recents de Notre Blog
         </h1>
-        <div className="w-full flex flex-col gap-12 md:gap-10">
+        <div className="w-full flex flex-col gap-12 md:gap-16">
           {latestArticles.map((article, i) => (
             <div
               key={i}
