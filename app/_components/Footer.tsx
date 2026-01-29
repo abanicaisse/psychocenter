@@ -7,24 +7,20 @@ import { Facebook, Mail, MapPin, Phone } from "lucide-react";
 const Footer = () => {
   const footerLinks: { label: string; url: string }[] = [
     {
-      label: "Home",
+      label: "Accueil",
       url: "/",
-    },
-    {
-      label: "Events",
-      url: "#",
     },
     {
       label: "Blog",
       url: "/blog",
     },
     {
-      label: "About",
-      url: "#",
+      label: "À Propos de Nous",
+      url: "/about-us",
     },
     {
-      label: "Contact us",
-      url: "#",
+      label: "Contactez-nous",
+      url: "/contact-us",
     },
   ];
 
@@ -57,8 +53,8 @@ const Footer = () => {
                   Psychocenter ASBL
                 </h3>
                 <p className="text-white/80 leading-relaxed">
-                  Soins de Santé Mentale, Prise en charge psychosociale
-                  individuelle et communautaire
+                  Association pour la prise en charge psychosociale
+                  communautaire
                 </p>
               </div>
             </div>

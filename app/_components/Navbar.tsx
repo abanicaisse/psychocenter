@@ -32,12 +32,8 @@ const Navbar = () => {
 
   const navLinks: { label: string; url: string }[] = [
     {
-      label: "Home",
+      label: "Accueil",
       url: "/",
-    },
-    {
-      label: "Events",
-      url: "#",
     },
     {
       label: "Blog",
