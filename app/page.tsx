@@ -5,6 +5,7 @@ import AboutUs from "./_components/AboutUs";
 import TeamMembers from "./_components/TeamMembers";
 import LatestArticles from "./_components/LatestArticles";
 import { ArrowRight, Heart, Users, Target } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -39,16 +40,21 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                <Button className="bg-accent hover:bg-accent/90 text-primary font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all group">
-                  Découvrir nos services
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button
-                  variant="outline"
-                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-6 text-lg rounded-xl transition-all"
-                >
-                  Nous contacter
-                </Button>
+                <Link href="/about-us">
+                  <Button className="bg-accent hover:bg-accent/90 text-primary font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all group">
+                    Découvrir nos services
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+
+                <Link href="/contact-us">
+                  <Button
+                    variant="outline"
+                    className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-6 text-lg rounded-xl transition-all"
+                  >
+                    Nous contacter
+                  </Button>
+                </Link>
               </div>
 
               {/* Stats Bar */}

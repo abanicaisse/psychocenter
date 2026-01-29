@@ -172,7 +172,7 @@ const Blogs = () => {
           {paginatedArticles.map((article, i) => (
             <article
               key={i}
-              className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-primary/5 hover:border-primary/20 cursor-pointer"
+              className="h-full flex flex-col group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-primary/5 hover:border-primary/20 cursor-pointer"
               onClick={() => router.push(article.href)}
             >
               {/* Image Container */}
@@ -193,7 +193,7 @@ const Blogs = () => {
               </div>
 
               {/* Content Container */}
-              <div className="p-6 flex flex-col gap-4">
+              <div className="flex flex-col flex-1 p-6 gap-4">
                 {/* Meta Information */}
                 <div className="flex flex-wrap items-center gap-4 text-sm text-primary/60">
                   <div className="flex items-center gap-2">
@@ -222,7 +222,7 @@ const Blogs = () => {
                     e.stopPropagation();
                     router.push(article.href);
                   }}
-                  className="w-full mt-2 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-200 group-hover:shadow-lg"
+                  className="w-full h-fit bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-200 group-hover:shadow-lg mt-auto py-3"
                 >
                   Lire l&apos;article
                 </Button>

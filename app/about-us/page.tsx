@@ -501,11 +501,13 @@ export default function AboutUsPage() {
             psychosocial des communautés. Votre soutien fait la différence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all group">
-              Faire un don
-              <Heart className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-            </Button>
-            <Link href="/">
+            <Link href="/donate">
+              <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all group">
+                Faire un don
+                <Heart className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+              </Button>
+            </Link>
+            <Link href="/contact-us">
               <Button
                 variant="outline"
                 className="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold px-8 py-6 text-lg rounded-xl transition-all group"

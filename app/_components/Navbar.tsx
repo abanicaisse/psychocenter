@@ -8,8 +8,10 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import psychocenterImg from "@/public/psycho-center.jpg";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const [windowWidth, setWindowWidth] = useState(0);
   const [expandMobileNav, setExpandMobileNav] = useState(false);
@@ -118,18 +120,24 @@ const Navbar = () => {
 
         {/* CTA Button (Desktop) */}
         {windowWidth >= 720 && (
-          <Button className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-primary/90 text-white hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 rounded-xl px-6">
+          <Button
+            className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-primary/90 text-white hover:from-primary/90 hover:to-primary shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 rounded-xl px-6"
+            onClick={() => router.push("/donate")}
+          >
             <Heart className="w-4 h-4" />
-            Donate Now
+            Faire Un Don
           </Button>
         )}
 
         {/* Mobile Menu Button */}
         {windowWidth < 720 && (
           <div className="flex items-center gap-3">
-            <Button className="bg-gradient-to-r from-primary to-primary/90 text-white hover:from-primary/90 hover:to-primary shadow-md hover:shadow-lg transition-all duration-300 rounded-xl px-6">
+            <Button
+              className="bg-gradient-to-r from-primary to-primary/90 text-white hover:from-primary/90 hover:to-primary shadow-md hover:shadow-lg transition-all duration-300 rounded-xl px-6"
+              onClick={() => router.push("/donate")}
+            >
               <Heart className="w-4 h-4 mr-2" />
-              Donate
+              Faire Un Don
             </Button>
             <Button
               onClick={() => setExpandMobileNav(true)}

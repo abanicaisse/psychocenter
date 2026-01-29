@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Image, { StaticImageData } from "next/image";
 import { Users, Award, Briefcase } from "lucide-react";
+import Link from "next/link";
 
 const TeamMembers = () => {
   const teamMembers: {
@@ -95,9 +96,11 @@ const TeamMembers = () => {
               Vous êtes un professionnel de la santé mentale ? Rejoignez-nous
               dans notre mission.
             </p>
-            <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all">
-              Nous contacter
-            </Button>
+            <Link href="/contact-us">
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all">
+                Nous contacter
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
